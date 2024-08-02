@@ -322,5 +322,177 @@
             width: 100%;
         }
 
-        .submit
+        .submit-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
+        footer {
+            background-color: var(--dark-bg);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Opulus</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Revolutionize Your Finances with Opulus</h1>
+            <p>Experience the future of financial management. Opulus empowers you to take control of your money like never before.</p>
+            <a href="#contact" class="cta-button">Join the Financial Revolution</a>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">Innovative Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3>Intelligent Budget Tracking</h3>
+                    <p>AI-powered budgeting that adapts to your lifestyle and financial goals.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-receipt feature-icon"></i>
+                    <h3>Smart Expense Analysis</h3>
+                    <p>Gain insights into your spending patterns with our advanced categorization system.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-bar feature-icon"></i>
+                    <h3>Risk-Free Investment Simulator</h3>
+                    <p>Hone your investment skills in a realistic, zero-risk environment.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bullseye feature-icon"></i>
+                    <h3>Dynamic Goal Setting</h3>
+                    <p>Set and achieve your financial objectives with our adaptive goal-tracking system.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-piggy-bank feature-icon"></i>
+                    <h3>Personalized Savings Strategies</h3>
+                    <p>Maximize your savings with tailored advice and automated saving plans.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calculator feature-icon"></i>
+                    <h3>Predictive Financial Modeling</h3>
+                    <p>Visualize your financial future with our sophisticated projection tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container about-content">
+            <div class="about-image">
+                <img src="/api/placeholder/600/400" alt="About Opulus">
+            </div>
+            <div class="about-text">
+                <h2>Redefining Financial Management</h2>
+                <p>At Opulus, we're not just another financial tool. We're a revolution in personal finance management. Our platform combines cutting-edge technology with deep financial expertise to deliver an unparalleled user experience.</p>
+                <p>Founded by a diverse team of fintech innovators, data scientists, and financial advisors, Opulus is designed to demystify finance and empower individuals to take control of their financial destiny.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">User Success Stories</h2>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Opulus has transformed my approach to personal finance. The insights and tools it provides have helped me save more than I ever thought possible."</p>
+                <p class="testimonial-author">- Alex M., Tech Entrepreneur</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"As someone new to investing, the investment simulator in Opulus has been an invaluable learning tool. I feel much more confident about entering the real market now."</p>
+                <p class="testimonial-author">- Mike T., Aspiring Investor</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Join Our Waitlist</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Sign Up for Early Access</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Opulus. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
