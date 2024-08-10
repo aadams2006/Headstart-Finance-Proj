@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving Goal Calculator</title>
+</head>
+<body>
+    <h1>Saving Goal Calculator</h1>
+    <form id="savingsForm">
+        <label for="income">Monthly Income ($): </label>
+        <input type="number" id="income" required><br><br>
+
+        <label for="expenses">Monthly Expenses ($): </label>
+        <input type="number" id="expenses" required><br><br>
+
+        <label for="savings">Current Savings ($): </label>
+        <input type="number" id="savings" required><br><br>
+
+        <label for="goal">Money Goal ($): </label>
+        <input type="number" id="goal" required><br><br>
+
+        <button type="button" onclick="calculateTime()">Calculate</button>
+    </form>
+
+    <h2 id="result"></h2>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
