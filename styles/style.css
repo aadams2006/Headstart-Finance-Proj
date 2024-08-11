@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root{
+    --bg-color:rgb(71, 86, 91);
+    --text-color:rgb(9, 9, 9);
+    --main-color:rgb(77, 218, 166);
+}
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body{
+    padding:2rem;
+    font-family: "Roboto", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+}
+h1{
+    text-align: center;
+    font-size: 1.5rem;
+}
+h3,header,ul{
+    margin-bottom: 0.5rem;
+
+}
+main{
+    max-width: 400px;
+    margin: 1rem auto;
+    background-color: white ;
+    padding: 1rem;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+
+}
+header{
+    background-color: var(--bg-color);
+    color:#fff;
+    padding: 1rem;
+    text-align: center;
+    border-radius:5px;
+    display: flex;
+    flex-wrap : wrap;
+}
+header div{
+    padding:5px;
+}
+
+header div{
+    padding: 5px;
+}
+header div:first-child{
+    flex-basis:100%;
+    font-size : 2.25rem;
+    font-weight: 600;
+}
+header div:nth-child(n+2){
+    flex-basis:50%;
+    font-size : 1.25rem;
+    font-weight: 500;
+}
+
+header h5{
+    font-size: 0.75rem;
+    font-weight:600;
+    text-transform: uppercase;
+}
+
+
+form{
+    display: flex;
+    flex-wrap : wrap;
+    gap: 10px;
+}
+form input:not(#type),
+form button{
+    width:100%;
+    padding: 10px;
+    border : 1px solid #ddd;
+    border-radius :  5px;
+    margin-bottom : 5px;
+    height : 42px;
+    font-family : "Roboto", sans-serif;
+    font-size: 1rem;
+}
+
+form button{
+    background-color: var(--main-color);
+    color:#fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+form-label{
+    font-size:0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
+
+form div:nth-child(-n+2){
+    flex-basis: 100%;
+}
+form div:nth-child(n+3){
+    flex-basis : calc(50% - 5px);
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    position: absolute;
+}
+
+
+ul{
+    list-style-type:none;
+}
+
+ul li{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding:5px 10px;
+    position : relative;
+}
+ul li:hover{
+    background:rgba(0,0,0,0.1);
+}
+
+.name h4{
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.name p{
+    font-size: 0.8rem;
+    color: #555;
+}
+amount{
+    font-weight: 600;
+}
+.action{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color:#fff;
+    height:100%;
+    width:50px;
+    display: grid;
+    place-items : center;
+    transform: scaleX(0);
+    transform-origin: right ;
+    transition: all 300ms;
+}
+ul li:hover .action{
+    transform:scaleX(1);
+}
+.action svg{
+    width:36px;
+    height:36px;
+    cursor:pointer;
+}
+
+#status{
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.switch {
+    position: relative;
+    height: 32px;
+    width: 300px;
+    margin: 20px auto;
+    background: #F2F2F2;
+    background: #D7D7D7;
+    border-radius: 32px;
+  }
+  .switch-label {
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100px;
+    line-height: 32px;
+    font-size: 12px;
+    color: #676a6c;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .switch-input {
+    display: none;
+  }
+  
+  .switch-input:checked + .switch-label {
+    color: #FFF;
+    transition: 0.15s ease-out;
+    transition-property: color, text-shadow;
+  }
+  
+  .switch-input:checked + .switch-label-y ~ .switch-selector {
+    transform: translateX(0%);
+    background-color: #626e6c;
+  }
+  .switch-input:checked + .switch-label-i ~ .switch-selector {
+    transform: translateX(100%);
+    background-color: #626e6c ;
+  }
+  .switch-input:checked + .switch-label-n ~ .switch-selector {
+    transform: translateX(200%);
+    background-color:#626e6c;
+  }
+  
+  
+  .switch-selector {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100px;
+    height: 32px;
+    border-radius: 32px;
+    background-color: #1ab394;
+    transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+
+
+
+
+
+
+

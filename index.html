@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet" />
+
+    <title>Budget Tracker</title>
+</head>
+<body>
+    <h1>Budget Tracker</h1>
+    <main>
+        <header>
+            <div>
+                <h5>Weekly Budget</h5>
+                <span id="weekly">$0.00</span>
+            </div>
+            <div>
+                <h5>Monthly budget</h5>
+                <span id="monthly">$0.00</span>
+            </div>
+
+            <div>
+                <h5>Yearly Budget</h5>
+                <span id="yearly">$0.00</span>
+            </div>
+        </header>
+        <section>
+            <h3>Budgets</h3>
+            <ul id="budgetList"></ul>
+            <div id="status"></div>
+        </section>
+        <section>
+            <h3>Add Budget</h3>
+            <form id="budgetForm">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" required/>
+                    <div>
+                        <label for="amount">Amount</label>
+                        <input type="number" name="amount" value="" min="0.01"
+                        step="0.01" required/>
+                    </div>
+
+                    <H3>Type</H3>
+                    <div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                              <div class="switch">
+                                <input id="switch-y" name="type" type="radio" value="yearly" class="switch-input" />
+                                <label for="switch-y" class="switch-label switch-label-y">Yearly</label>
+                                <input id="switch-i" name="type" type="radio" value="monthly" class="switch-input" checked />
+                                <label for="switch-i" class="switch-label switch-label-i">Monthly</label>
+                                <input id="switch-n" name="type" type="radio" value="weekly" class="switch-input" />
+                                <label for="switch-n" class="switch-label switch-label-n">Weekly</label>
+                                <span class="switch-selector"></span>
+                              </div>
+                            </div>
+                          </div>
+                        <!-- <label for="type">
+                            <input type="checkbox" name="type" id="type"/>
+                            <div class="option">
+                                <span data-option-="yearly">YEARLY</span>
+                                <span data-option-="monthly">MONTHLY</span>
+                                <span data-option-="weekly">WEEKLY</span>
+                            </div>
+                        </label> -->
+                    </div>
+                    
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" name="date" required />
+                    </div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
