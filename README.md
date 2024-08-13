@@ -2,7 +2,7 @@
 
 # Expense Tracker - Opulus
 
-![Expense Tracker Screenshot](screenshot.png)
+![Expense Tracker Screenshot](expenseDemoScreenshot.png)
 
 ## Introduction
 
