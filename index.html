@@ -372,6 +372,7 @@
             }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -465,7 +466,7 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Join Our Waitlist</h2>
-            <form class="contact-form">
+            <form id="waitlistForm" class="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -480,6 +481,7 @@
                 </div>
                 <button type="submit" class="submit-button">Sign Up for Early Access</button>
             </form>
+            <div id="formResponse" style="margin-top: 1rem; text-align: center;"></div>
         </div>
     </section>
 
@@ -494,5 +496,34 @@
             </div>
         </div>
     </footer>
+<script>
+    $(document).ready(function() {
+        $('#waitlistForm').submit(function(e) {
+            e.preventDefault();
+            
+            var formData = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                message: $('#message').val()
+            };
+            
+            // Replace 'YOUR_FORM_SUBMISSION_ENDPOINT' with your actual endpoint
+            $.ajax({
+                type: 'POST',
+                url: 'YOUR_FORM_SUBMISSION_ENDPOINT',
+                data: formData,
+                dataType: 'json',
+                encode: true
+            })
+            .done(function(data) {
+                $('#formResponse').html('<p style="color: green;">Thank you for joining our waitlist! We\'ll be in touch soon.</p>');
+                $('#waitlistForm')[0].reset();
+            })
+            .fail(function(data) {
+                $('#formResponse').html('<p style="color: red;">Oops! There was a problem submitting your form. Please try again later.</p>');
+            });
+        });
+    });
+    </script>
 </body>
 </html>
