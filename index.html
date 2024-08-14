@@ -466,8 +466,8 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Join Our Waitlist</h2>
-            <form id="waitlistForm" class="contact-form" target="hidden_iframe" onsubmit="submitted=true;">
-                <div class="form-group">
+                    <form id="waitlistForm" class="contact-form" target="hidden_iframe" method="POST">                
+                    <div class="form-group">
                     <label for="entry.448184558">Name</label>
                     <input type="text" id="entry.448184558" name="entry.448184558" required>
                 </div>
@@ -498,26 +498,15 @@
         </div>
     </footer>
     <script>
-    $(document).ready(function() {
-        var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfp2foCFDG7HRtHnW0P93O3ghtnBGdgPjvDezhDufqiIehd9g/viewform?usp=sf_link';
-        $('#waitlistForm').attr('action', formUrl);
-        
-        $('#waitlistForm').submit(function(e) {
-            e.preventDefault();
-            var form = $(this);
-            var url = form.attr('action');
+           $(document).ready(function() {
+            var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfp2foCFDG7HRtHnW0P93O3ghtnBGdgPjvDezhDufqiIehd9g/viewform';
+            $('#waitlistForm').attr('action', formUrl);
             
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: form.serialize(),
-                success: function(data) {
+            $('#waitlistForm').submit(function() {
+                setTimeout(function() {
                     $('#formResponse').html('<p style="color: green;">Thank you for joining our waitlist! We\'ll be in touch soon.</p>');
-                    form[0].reset();
-                },
-                error: function(data) {
-                    $('#formResponse').html('<p style="color: red;">Oops! There was a problem submitting your form. Please try again later.</p>');
-                }
+                    $('#waitlistForm')[0].reset();
+                }, 1000);
             });
         });
     });
