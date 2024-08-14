@@ -466,7 +466,7 @@
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Join Our Waitlist</h2>
-                    <form id="waitlistForm" class="contact-form" target="hidden_iframe" method="POST">                
+            <form id="waitlistForm" class="contact-form" target="hidden_iframe" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSfp2foCFDG7HRtHnW0P93O3ghtnBGdgPjvDezhDufqiIehd9g/formResponse">
                     <div class="form-group">
                     <label for="entry.448184558">Name</label>
                     <input type="text" id="entry.448184558" name="entry.448184558" required>
@@ -497,34 +497,26 @@
             </div>
         </div>
     </footer>
-   <script>
+<script>
     $(document).ready(function() {
         console.log('Document ready');
-        var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfp2foCFDG7HRtHnW0P93O3ghtnBGdgPjvDezhDufqiIehd9g/formResponse';
-        $('#waitlistForm').attr('action', formUrl);
         
         $('#waitlistForm').on('submit', function(e) {
             console.log('Form submitted');
-            e.preventDefault();
             
-            var formData = $(this).serialize();
-            console.log('Form data:', formData);
+            // Show loading message
+            $('#formResponse').html('<p style="color: blue;">Submitting your request...</p>');
             
-            $.ajax({
-                type: "POST",
-                url: formUrl,
-                data: formData,
-                contentType: "application/x-www-form-urlencoded",
-                success: function(response) {
-                    console.log('Form submission successful');
-                    $('#formResponse').html('<p style="color: green;">Thank you for joining our waitlist! We\'ll be in touch soon.</p>');
-                    $('#waitlistForm')[0].reset();
-                },
-                error: function(xhr, status, error) {
-                    console.error('Form submission error:', status, error);
-                    $('#formResponse').html('<p style="color: red;">Oops! There was a problem submitting your form. Please try again later.</p>');
-                }
-            });
+            // Use setTimeout to allow the form to submit before showing the success message
+            setTimeout(function() {
+                $('#formResponse').html('<p style="color: green;">Thank you for joining our waitlist! We\'ll be in touch soon.</p>');
+                $('#waitlistForm')[0].reset();
+            }, 2000);  // Increased timeout to 2 seconds for more reliable form submission
+        });
+        
+        // Listen for the iframe load event
+        $('#hidden_iframe').on('load', function() {
+            console.log('iframe loaded');
         });
     });
     </script>
