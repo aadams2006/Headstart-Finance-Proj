@@ -497,16 +497,33 @@
             </div>
         </div>
     </footer>
-    <script>
-           $(document).ready(function() {
-            var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfp2foCFDG7HRtHnW0P93O3ghtnBGdgPjvDezhDufqiIehd9g/formResponse';
-            $('#waitlistForm').attr('action', formUrl);
+   <script>
+    $(document).ready(function() {
+        console.log('Document ready');
+        var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfp2foCFDG7HRtHnW0P93O3ghtnBGdgPjvDezhDufqiIehd9g/formResponse';
+        $('#waitlistForm').attr('action', formUrl);
+        
+        $('#waitlistForm').on('submit', function(e) {
+            console.log('Form submitted');
+            e.preventDefault();
             
-            $('#waitlistForm').submit(function() {
-                setTimeout(function() {
+            var formData = $(this).serialize();
+            console.log('Form data:', formData);
+            
+            $.ajax({
+                type: "POST",
+                url: formUrl,
+                data: formData,
+                contentType: "application/x-www-form-urlencoded",
+                success: function(response) {
+                    console.log('Form submission successful');
                     $('#formResponse').html('<p style="color: green;">Thank you for joining our waitlist! We\'ll be in touch soon.</p>');
                     $('#waitlistForm')[0].reset();
-                }, 1000);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Form submission error:', status, error);
+                    $('#formResponse').html('<p style="color: red;">Oops! There was a problem submitting your form. Please try again later.</p>');
+                }
             });
         });
     });
