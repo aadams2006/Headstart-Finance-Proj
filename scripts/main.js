@@ -14,7 +14,7 @@ const budgets = [
 const formatter = new Intl.NumberFormat('en-US', {
     style:'currency',
     currency: 'USD',
-    signDisplay : 'always'
+    signDisplay: 'auto'
 })
 const list = document.getElementById("budgetList");
 const form = document.getElementById("budgetForm");
@@ -58,7 +58,7 @@ function renderList(){
         </div>
 
         <div class="amount ${type}">
-            <span>${formatter.format(amount)} </span>
+            <span> +${formatter.format(amount)} </span>
         </div>
         <div class="action">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" onclick="deleteBudget(${id})">
