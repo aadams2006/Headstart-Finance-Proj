@@ -3,533 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opulus - Innovative Financial Management Platform</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Opulus – Intelligent Finance for Ambitious Professionals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6c5ce7;
-            --secondary-color: #a29bfe;
-            --accent-color: #fd79a8;
-            --text-color: #2d3436;
-            --light-bg: #dfe6e9;
-            --dark-bg: #2d3436;
-        }
-        
-        body, html {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            scroll-behavior: smooth;
-            background-color: var(--light-bg);
+            --primary: #5b5bd6;
+            --primary-dark: #3d3db3;
+            --accent: #ff6584;
+            --ink: #1f1f3d;
+            --muted: #6f6f8f;
+            --bg: #f7f8fc;
+            --card: #ffffff;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--bg);
         }
 
         header {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+            background: rgba(247, 248, 252, 0.85);
+            border-bottom: 1px solid rgba(99, 99, 145, 0.08);
         }
 
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 24px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            justify-content: space-between;
+            gap: 24px;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
         }
 
         nav ul {
-            list-style-type: none;
-            padding: 0;
+            list-style: none;
             display: flex;
+            gap: 26px;
+            padding: 0;
+            margin: 0;
         }
 
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        nav a {
             font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
 
-        nav ul li a:hover {
-            color: var(--primary-color);
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-login {
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .cta-login:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
         .hero {
-            height: 100vh;
-            display: flex;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 24px 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 48px;
             align-items: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 4vw, 3.4rem);
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hero-cta .primary-btn {
+            background: var(--primary);
             color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.ctfassets.net/1aemqu6a6t65/5rPsNLkgpwvZPSmjhE5ChB/9ee0978b3d792515d59fefab5296b832/wall-street-photo-tagger-yancey-iv-nyc-and-company-02-2?w=1200&h=800&q=75') center/cover no-repeat;
-            opacity: 0.1;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: left;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .cta-button {
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            display: inline-block;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 12px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
         }
 
-        .cta-button:hover {
-            background-color: #fff;
-            color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        .hero-cta .primary-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        .section {
-            padding: 5rem 0;
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .metric-card {
+            background: var(--card);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 12px 30px rgba(99, 99, 145, 0.12);
+        }
+
+        .metric-card strong {
+            display: block;
+            font-size: 1.8rem;
+        }
+
+        section {
+            padding: 90px 24px;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 18px;
         }
 
-        .features {
+        .section-subtitle {
+            color: var(--muted);
+            max-width: 620px;
+            line-height: 1.6;
+        }
+
+        .feature-grid {
+            margin-top: 48px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
         }
 
         .feature-card {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background: var(--card);
+            border-radius: 18px;
+            padding: 26px;
+            box-shadow: 0 12px 30px rgba(99, 99, 145, 0.12);
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(135deg, transparent, var(--secondary-color), transparent);
-            transform: rotate(45deg);
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        .feature-card:hover::before {
-            top: -100%;
-            left: -100%;
-            opacity: 0.1;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .about {
-            background-color: var(--dark-bg);
-            color: #fff;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .about-image img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            border: 2px solid var(--accent-color);
-            border-radius: 15px;
-            z-index: -1;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+        .feature-card h3 {
+            margin-top: 0;
         }
 
         .testimonials {
-            text-align: center;
-            background-color: #fff;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
         }
 
-        .testimonial-card {
-            background-color: var(--light-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+        .testimonial {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 26px rgba(99, 99, 145, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        .testimonial strong {
+            font-size: 1rem;
         }
 
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.2);
-        }
-
-        .submit-button {
-            background-color: var(--primary-color);
+        .cta-strip {
+            background: linear-gradient(120deg, var(--primary), var(--accent));
             color: #fff;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            width: 100%;
+            border-radius: 26px;
+            padding: 60px 48px;
+            text-align: center;
+            margin-top: 60px;
         }
 
-        .submit-button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        .cta-strip h2 {
+            font-size: clamp(2rem, 3vw, 2.6rem);
+            margin-bottom: 16px;
+        }
+
+        .cta-strip a {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-strip a:hover {
+            transform: translateY(-2px);
         }
 
         footer {
-            background-color: var(--dark-bg);
-            color: #fff;
+            padding: 40px 24px 60px;
             text-align: center;
-            padding: 2rem 0;
+            color: var(--muted);
         }
 
-        .social-icons {
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            color: #fff;
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: var(--accent-color);
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-
+        @media (max-width: 640px) {
             nav ul {
-                margin-top: 1rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                flex-direction: column;
-            }
-
-            .about-image::before {
                 display: none;
+            }
+
+            header {
+                border-bottom: none;
             }
         }
     </style>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    </head>
+</head>
 <body>
     <header>
-        <div class="container header-content">
-            <a href="#" class="logo">Opulus</a>
-            <nav>
+        <div class="nav-container">
+            <a class="logo" href="index.html">Opulus</a>
+            <nav aria-label="Primary navigation">
                 <ul>
-                    <li><a href="#home">Home</a></li>
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#customers">Customer stories</a></li>
+                    <li><a href="#why-opulus">Why Opulus</a></li>
                 </ul>
             </nav>
+            <a class="cta-login" href="login.html">Sign in</a>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h1>Revolutionize Your Finances with Opulus</h1>
-            <p>Experience the future of financial management. Opulus empowers you to take control of your money like never before.</p>
-            <a href="#contact" class="cta-button">Join the Financial Revolution</a>
-        </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div>
+                <h1>Command your money with the platform built for next-level earners.</h1>
+                <p>Opulus brings institutional-grade financial tooling to everyday professionals. Centralize your income, expenses, goals, and real-time insights in one secure hub designed for action.</p>
+                <div class="hero-cta">
+                    <a class="primary-btn" href="login.html">Access the platform</a>
+                    <span>Launch-ready suite for serious savers.</span>
+                </div>
+                <div class="metrics" aria-label="Key metrics">
+                    <article class="metric-card">
+                        <strong>94%</strong>
+                        of beta users feel more in control after two weeks.
+                    </article>
+                    <article class="metric-card">
+                        <strong>3.2x</strong>
+                        faster path to savings goals with Opulus insights.
+                    </article>
+                    <article class="metric-card">
+                        <strong>24/7</strong>
+                        secure access across every device you use.
+                    </article>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=900&q=80" alt="Financial dashboard preview" style="width:100%; border-radius: 26px; box-shadow: 0 30px 60px rgba(99, 99, 145, 0.22);">
+            </div>
+        </section>
 
-    <section id="features" class="section">
-        <div class="container">
-            <h2 class="section-title">Innovative Features</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <i class="fas fa-chart-line feature-icon"></i>
-                    <h3>Intelligent Budget Tracking</h3>
-                    <p>AI-powered budgeting that adapts to your lifestyle and financial goals.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-receipt feature-icon"></i>
-                    <h3>Smart Expense Analysis</h3>
-                    <p>Gain insights into your spending patterns with our advanced categorization system.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-bar feature-icon"></i>
-                    <h3>Risk-Free Investment Simulator</h3>
-                    <p>Hone your investment skills in a realistic, zero-risk environment.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-bullseye feature-icon"></i>
-                    <h3>Dynamic Goal Setting</h3>
-                    <p>Set and achieve your financial objectives with our adaptive goal-tracking system.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-piggy-bank feature-icon"></i>
-                    <h3>Personalized Savings Strategies</h3>
-                    <p>Maximize your savings with tailored advice and automated saving plans.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-calculator feature-icon"></i>
-                    <h3>Predictive Financial Modeling</h3>
-                    <p>Visualize your financial future with our sophisticated projection tools.</p>
-                </div>
-                 <div class="feature-card">
-                    <i class="fas fa-newspaper feature-icon"></i>
-                    <h3>Latest Market News</h3>
-                    <p>Stay up-to-date on the latest market trends and financial news.</p>
-                </div>
-                 <div class="feature-card">
-                    <i class="fas fa-users feature-icon"></i>
-                    <h3>Fireside Chats</h3>
-                    <p>Hear from industry leaders and renowned figures in the field of finance.</p>
+        <section id="features">
+            <div class="section-inner">
+                <h2 class="section-title">Everything you need for modern money management</h2>
+                <p class="section-subtitle">We pair automated insights with hands-on tools so you can act quickly—no spreadsheets required.</p>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <h3>Expense intelligence</h3>
+                        <p>Track spending in real time with smart categorization and trend alerts that keep you ahead of every bill.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Goal planning</h3>
+                        <p>Model savings timelines, stress-test scenarios, and adjust assumptions in seconds.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Account aggregation</h3>
+                        <p>Securely connect your banking, investing, and credit accounts to see the full picture.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Launch support</h3>
+                        <p>Concierge onboarding and live chat so your team never loses momentum.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="section about">
-        <div class="container about-content">
-            <div class="about-image">
-                <img src="https://www.investopedia.com/thmb/DP6ZULBxBOwG_BP3e-ZcFNbscPs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1195603075-7e8dc700af47458e9b4f03a91c1397d8.jpg" alt="About Opulus">
+        <section id="customers">
+            <div class="section-inner">
+                <h2 class="section-title">Teams already building on Opulus</h2>
+                <p class="section-subtitle">From boutique agencies to rapidly growing startups, leaders choose Opulus to bring clarity to their cash flow.</p>
+                <div class="testimonials">
+                    <article class="testimonial">
+                        <p>“Opulus replaced three different systems for us. Our leadership team reviews spending and goal progress in minutes instead of hours.”</p>
+                        <strong>— Maya Patel, COO at Lumen Studio</strong>
+                    </article>
+                    <article class="testimonial">
+                        <p>“The new financial workspace lets every employee understand how their decisions affect our runway. It's become a daily habit.”</p>
+                        <strong>— Lucas Grant, Founder of Northwind Labs</strong>
+                    </article>
+                    <article class="testimonial">
+                        <p>“We've never had a clearer view into future savings milestones. Opulus keeps our plan on track with zero busywork.”</p>
+                        <strong>— Evelyn Wright, Managing Director at Meridian Advisors</strong>
+                    </article>
+                </div>
             </div>
-            <div class="about-text">
-                <h2>Redefining Financial Management</h2>
-                <p>At Opulus, we're not just another financial tool. We're a revolution in personal finance management. Our platform combines cutting-edge technology with deep financial expertise to deliver an unparalleled user experience.</p>
-                <p>Founded by a diverse team of fintech innovators, data scientists, and financial advisors, Opulus is designed to demystify finance and empower individuals to take control of their financial destiny.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="testimonials" class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">User Success Stories</h2>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Opulus has transformed my approach to personal finance. The insights and tools it provides have helped me save more than I ever thought possible."</p>
-                <p class="testimonial-author">- Cameron M, Beta Tester</p>
+        <section id="why-opulus">
+            <div class="section-inner">
+                <div class="cta-strip">
+                    <h2>Ready to experience the secure Opulus workspace?</h2>
+                    <p style="margin-bottom: 26px; font-size: 1.05rem; line-height: 1.6;">Create your account to unlock the full expense tracker, savings goal calculator, and personalized dashboard.</p>
+                    <a href="login.html">Create your account</a>
+                </div>
             </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"As someone new to investing, the investment simulator in Opulus has been a great learning tool. I feel more confident taking on the real market now."</p>
-                <p class="testimonial-author">- Sebastian T, Aspiring Investor</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Join Our Waitlist</h2>
-            <form id="waitlistForm" class="contact-form" target="hidden_iframe" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSfp2foCFDG7HRtHnW0P93O3ghtnBGdgPjvDezhDufqiIehd9g/formResponse">
-                    <div class="form-group">
-                    <label for="entry.448184558">Name</label>
-                    <input type="text" id="entry.448184558" name="entry.448184558" required>
-                </div>
-                <div class="form-group">
-                    <label for="entry.912695267">Email</label>
-                    <input type="email" id="entry.912695267" name="entry.912695267" required>
-                </div>
-                <div class="form-group">
-                    <label for="entry.987561451">Message (Optional)</label>
-                    <textarea id="entry.987561451" name="entry.987561451" rows="4"></textarea>
-                </div>
-                <button type="submit" class="submit-button">Sign Up for Early Access</button>
-            </form>
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-            <div id="formResponse" style="margin-top: 1rem; text-align: center;"></div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Opulus. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/company/opulus"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
+        © <span id="year"></span> Opulus. All rights reserved.
     </footer>
-<script>
-    $(document).ready(function() {
-        console.log('Document ready');
-        
-        $('#waitlistForm').on('submit', function(e) {
-            console.log('Form submitted');
-            
-            // Show loading message
-            $('#formResponse').html('<p style="color: blue;">Submitting your request...</p>');
-            
-            // Use setTimeout to allow the form to submit before showing the success message
-            setTimeout(function() {
-                $('#formResponse').html('<p style="color: green;">Thank you for joining our waitlist! We\'ll be in touch soon.</p>');
-                $('#waitlistForm')[0].reset();
-            }, 2000);  // Increased timeout to 2 seconds for more reliable form submission
-        });
-        
-        // Listen for the iframe load event
-        $('#hidden_iframe').on('load', function() {
-            console.log('iframe loaded');
-        });
-    });
-   </script>
-    <script defer src="https://vercel.com/analytics"></script>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

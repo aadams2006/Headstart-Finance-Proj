@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opulus Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-UuaO4CwJnnM95Il8GWZGNzhJ+vzgxoBTsRq3eIqz5dlM+Z8r0gImbAbw/TSEuxsjjXNMTvEihQ/H0ypJdCEi2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard" data-view="dashboard">
+        <header class="dashboard__header">
+            <div class="dashboard__brand">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Opulus Workspace</span>
+            </div>
+            <div class="dashboard__user" aria-live="polite">
+                <span class="dashboard__welcome">Welcome back, <strong data-user-name>Member</strong></span>
+                <button id="logout-button" class="logout-btn" type="button">Log out</button>
+            </div>
+        </header>
+
+        <div class="dashboard__content">
+            <aside class="dashboard__sidebar">
+                <h2>Overview</h2>
+                <ul>
+                    <li><a href="#expense-tracker">Expense tracker</a></li>
+                    <li><a href="#savings-goal">Savings goals</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                </ul>
+
+                <section class="session-card" aria-label="Session information">
+                    <h3>Current session</h3>
+                    <dl>
+                        <div>
+                            <dt>Signed in as</dt>
+                            <dd data-user-email>you@example.com</dd>
+                        </div>
+                        <div>
+                            <dt>Active since</dt>
+                            <dd data-session-time>–</dd>
+                        </div>
+                    </dl>
+                </section>
+            </aside>
+
+            <main class="dashboard__main">
+                <section id="insights" class="panel highlight">
+                    <div>
+                        <h1>Your financial command center</h1>
+                        <p>Use the live tools below to plan savings journeys, categorize spending, and keep tabs on your monthly momentum. Everything you add is stored securely on this device.</p>
+                    </div>
+                    <div class="highlight__tips">
+                        <article>
+                            <h3><i class="fa-solid fa-lightbulb"></i> Tip</h3>
+                            <p>Track expenses for each goal to reveal spending patterns and unlock new savings opportunities.</p>
+                        </article>
+                        <article>
+                            <h3><i class="fa-solid fa-shield-halved"></i> Private by design</h3>
+                            <p>All data stays in your browser. Clear your session to remove your entries at any time.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="expense-tracker" class="panel">
+                    <header class="panel__header">
+                        <div>
+                            <h2><i class="fa-solid fa-wallet"></i> Expense tracker</h2>
+                            <p>Log purchases, assign categories, and monitor totals in real time.</p>
+                        </div>
+                        <div class="panel__actions">
+                            <label for="sort-by">Sort</label>
+                            <select id="sort-by" aria-label="Sort expenses by">
+                                <option value="description">Name</option>
+                                <option value="amount">Amount</option>
+                                <option value="category">Category</option>
+                                <option value="createdAt">Newest</option>
+                            </select>
+                        </div>
+                    </header>
+
+                    <form id="expense-form" class="expense-form">
+                        <div class="form-row">
+                            <label for="description">Description</label>
+                            <input type="text" id="description" placeholder="Groceries, ride share, utilities…" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="amount">Amount</label>
+                            <input type="number" id="amount" placeholder="45.18" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="category">Category</label>
+                            <select id="category">
+                                <option value="food">Food</option>
+                                <option value="housing">Housing</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="personal">Personal</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary">Add expense</button>
+                    </form>
+
+                    <div class="expense-summary">
+                        <div class="summary-item">
+                            <span>Total expenses</span>
+                            <strong id="total-amount">$0.00</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Entries</span>
+                            <strong id="expense-count">0</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Top category</span>
+                            <strong id="top-category">–</strong>
+                        </div>
+                    </div>
+
+                    <ul id="expense-list" class="expense-list" aria-live="polite"></ul>
+                </section>
+
+                <section id="savings-goal" class="panel">
+                    <header class="panel__header">
+                        <div>
+                            <h2><i class="fa-solid fa-piggy-bank"></i> Savings goal planner</h2>
+                            <p>Model how long it will take to reach a target based on your projected monthly savings.</p>
+                        </div>
+                    </header>
+
+                    <form class="calculator" onsubmit="event.preventDefault(); calculateTimeline();">
+                        <div class="calculator__grid">
+                            <label>Monthly income
+                                <input type="number" id="income" min="0" step="0.01" placeholder="5000" required>
+                            </label>
+                            <label>Monthly expenses
+                                <input type="number" id="expenses" min="0" step="0.01" placeholder="3200" required>
+                            </label>
+                            <label>Current savings
+                                <input type="number" id="savings" min="0" step="0.01" placeholder="1500" required>
+                            </label>
+                            <label>Goal amount
+                                <input type="number" id="goal" min="0" step="0.01" placeholder="20000" required>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-primary">Estimate timeline</button>
+                    </form>
+
+                    <div id="result" class="calculator__result" aria-live="polite"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="expenses.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>
